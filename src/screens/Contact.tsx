@@ -14,7 +14,7 @@ interface ContactProps {
   navigation: ContactNavigationProp;
 }
 
-export default function Contact({navigation}: ContactProps) {
+export default function Contact({navigation}: any) {
   return (
     <View style={Styles.container}>
       <TouchableOpacity

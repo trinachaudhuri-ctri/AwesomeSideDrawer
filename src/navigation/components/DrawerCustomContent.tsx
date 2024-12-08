@@ -1,7 +1,4 @@
-import {
-  DrawerNavigationProp,
-  useDrawerProgress,
-} from '@react-navigation/drawer';
+import {useDrawerProgress} from '@react-navigation/drawer';
 import React from 'react';
 import {StatusBar, Text, TouchableOpacity} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
@@ -9,17 +6,7 @@ import Animated, {interpolate} from 'react-native-reanimated';
 import useCustomDrawerProgress from '../../hooks/useCustomDrawerProgress';
 import {Styles} from '../../styles/style';
 
-type DrawerParamList = {
-  Tab1: undefined;
-  Contact: undefined;
-};
-
-// Define the navigation prop type for DrawerCustomContent
-type DrawerCustomContentProps = {
-  navigation: DrawerNavigationProp<DrawerParamList>;
-};
-
-const DrawerCustomContent = ({navigation}: DrawerCustomContentProps) => {
+const DrawerCustomContent = ({navigation}: any) => {
   const drawerProgress = useDrawerProgress();
 
   const animatedStyle = useCustomDrawerProgress({drawerProgress});
