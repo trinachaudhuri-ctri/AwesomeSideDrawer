@@ -6,7 +6,7 @@ import {IProps} from '../types/navigationType';
 const Tab1: React.FC<IProps> = ({navigation}) => {
   return (
     <SafeAreaView>
-      <View style={Styles.tab1containerStyle}>
+      <View style={Styles.container}>
         <Pressable
           style={Styles.hamburgerButton}
           onPress={() => navigation.openDrawer()}>

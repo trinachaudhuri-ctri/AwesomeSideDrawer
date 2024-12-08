@@ -1,27 +1,64 @@
 import {StyleSheet} from 'react-native';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 export const Styles = StyleSheet.create({
-  tab1containerStyle: {
-    paddingTop: '20%',
-    backgroundColor: 'red',
+  animatedBackgroundcontainer: {
+    flex: 1,
   },
-  tab2containerStyle: {
-    paddingTop: '20%',
-    backgroundColor: 'yellow',
+  animatedbackground: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: '#1e1e1e',
   },
-  largeText: {
+  drawerBackground: {
+    ...StyleSheet.absoluteFillObject,
+    zIndex: 1,
+  },
+  drawerContainer: {
+    flex: 1,
+    padding: 20,
+    justifyContent: 'center',
+    borderTopRightRadius: 20,
+    borderBottomRightRadius: 20,
+  },
+  drawerMenuItem: {
+    marginVertical: 15,
+    padding: 15,
+    borderRadius: 10,
+    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+  },
+  drawerMenuText: {
+    fontSize: 18,
     fontWeight: 'bold',
-    fontSize: 15,
+    color: '#ffffff',
+  },
+  container: {
+    backgroundColor: '#f6f6f6',
+    overflow: 'hidden',
+    paddingTop: '10%',
+    shadowColor: '#000',
+    shadowOffset: {width: -5, height: 0},
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
+    width: '100%',
+    height: '100%',
   },
   hamburgerButton: {
-    margin: 10,
-    padding: 10,
+    padding: 20,
   },
   hamburgerLine: {
-    height: 3,
-    backgroundColor: 'black',
-    marginVertical: 2,
-    width: 25,
+    width: 30,
+    height: 4,
+    backgroundColor: '#000',
+    marginVertical: 3,
+  },
+  contacttextcontainer: {
+    paddingTop: '50%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  welcomeText: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    margin: 20,
+    textAlign: 'center',
   },
 });

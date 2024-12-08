@@ -1,35 +1,28 @@
 import {useDrawerProgress} from '@react-navigation/drawer';
 import React from 'react';
-import Animated, {interpolate, useAnimatedStyle} from 'react-native-reanimated';
-import Tab1 from './Tab1';
+import {Pressable, SafeAreaView, Text, View} from 'react-native';
+import Animated from 'react-native-reanimated';
+import useAnimatedScreen from '../hooks/useAnimatedScreen';
+import {Styles} from '../styles/style';
 import {IProps} from '../types/navigationType';
 
 const Home: React.FC<IProps> = ({navigation}) => {
   const drawerProgress = useDrawerProgress();
 
-  const animatedStyle = useAnimatedStyle(() => {
-    const rotate = interpolate(drawerProgress.value, [0, 1], [0, -10]); // Rotate the screen
-    const translateX = interpolate(drawerProgress.value, [0, 1], [0, 1]);
-    const borderRadius = interpolate(drawerProgress.value, [0, 1], [0, 80]);
-
-    return {
-      transform: [{translateX}, {rotateZ: `${rotate}deg`}],
-      borderBottomLeftRadius: borderRadius,
-    };
-  });
+  const animatedStyle = useAnimatedScreen({drawerProgress});
 
   return (
-    <Animated.View
-      style={[
-        {
-          width: '100%',
-          height: '100%',
-          overflow: 'hidden',
-          backgroundColor: 'red',
-        },
-        animatedStyle,
-      ]}>
-      <Tab1 navigation={navigation} />
+    <Animated.View style={[Styles.container, animatedStyle]}>
+      <SafeAreaView>
+        <Pressable
+          onPress={() => navigation.openDrawer()}
+          style={Styles.hamburgerButton}>
+          <Animated.View style={Styles.hamburgerLine} />
+          <Animated.View style={Styles.hamburgerLine} />
+          <Animated.View style={Styles.hamburgerLine} />
+        </Pressable>
+        <Text style={Styles.welcomeText}>Welcome to Home Screen</Text>
+      </SafeAreaView>
     </Animated.View>
   );
 };

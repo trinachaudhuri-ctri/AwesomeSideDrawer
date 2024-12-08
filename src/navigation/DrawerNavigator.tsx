@@ -1,34 +1,35 @@
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import {StyleSheet} from 'react-native';
-import Tab2 from '../screens/Tab2';
-import TabNavigator from './TabNavigator';
-import Tab1 from '../screens/Tab1';
-import StackNavigator from './Stacknavigator';
 import Contact from '../screens/Contact';
+import AnimatedBackground from './components/AnimatedBackground';
+import DrawerCustomContent from './components/DrawerCustomContent';
+import TabNavigationWrapper from './components/TabNavigationWrapper';
+import {useNavigation} from '@react-navigation/native';
 
 const Drawer = createDrawerNavigator();
 
 export function DrawerNavigator() {
+  const navigation = useNavigation();
   return (
     <Drawer.Navigator
+      drawerContent={props => <DrawerCustomContent {...props} />}
       screenOptions={{
         drawerType: 'back',
-        swipeEdgeWidth: 100,
-        sceneStyle: {backgroundColor: 'transparent'},
+        swipeEdgeWidth: 300,
         drawerStyle: {
-          width: '40%',
-          backgroundColor: 'transparent',
+          width: '60%',
         },
         headerShown: false,
+        overlayColor: 'transparent',
       }}>
-      <Drawer.Screen name="Tab" component={TabNavigator} />
-      <Drawer.Screen name="Contact" component={Contact} />
+      <Drawer.Screen name="Tab1" component={TabNavigationWrapper} />
+      <Drawer.Screen
+        name="Contact"
+        component={() => (
+          <AnimatedBackground>
+            <Contact navigation={navigation} />
+          </AnimatedBackground>
+        )}
+      />
     </Drawer.Navigator>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: 'red',
-  },
-});
